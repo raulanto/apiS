@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+import dj_database_url
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,8 +32,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
-    # tamplates de jaaxmin
-    # 'django.contrib.staticfiles',  # required for serving swagger ui's css/js files
+
     'drf_yasg',
     'jazzmin',
     'django.contrib.admin',
@@ -38,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'whitenoise.runserver_nostatic'
+
+
 ]
 
 THIRD_PARTY_APPS = [
@@ -68,6 +72,7 @@ INSTALLED_APPS += THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -76,7 +81,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'simple_history.middleware.HistoryRequestMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+
 ]
 
 ROOT_URLCONF = 'ApiSensores.urls'
@@ -104,10 +109,11 @@ WSGI_APPLICATION = 'ApiSensores.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default':dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     'NAME': 'apisensores',
@@ -335,7 +341,7 @@ JAZZMIN_SETTINGS = {
     # Add a language dropdown into the admin
     "language_chooser": False,
 }
-ALLOWED_HOSTS=['*']
+ALLOWED_HOSTS=['*','localhost']
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
