@@ -1,1 +1,1 @@
-web: gunicorn ApiSensores.wsgi
+web: python manage.py collectstatic && gunicorn ApiSensores.wsgi

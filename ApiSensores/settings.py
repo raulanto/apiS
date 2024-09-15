@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic'
 ]
 
 THIRD_PARTY_APPS = [
+
     'import_export',
     'coreapi',
     'rest_framework',
@@ -74,6 +76,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'simple_history.middleware.HistoryRequestMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'ApiSensores.urls'
@@ -168,7 +171,7 @@ REST_FRAMEWORK = {
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 JAZZMIN_UI_TWEAKS = {
     "navbar_small_text": True,
     "footer_small_text": False,
@@ -333,3 +336,5 @@ JAZZMIN_SETTINGS = {
     "language_chooser": False,
 }
 ALLOWED_HOSTS=['*']
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
