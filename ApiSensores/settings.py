@@ -24,7 +24,6 @@ SECRET_KEY = 'django-insecure-t9j*^2jv_^om$ru!+wz+zq^851cn!xqvk01itibc#*=fe-dufp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -333,3 +332,4 @@ JAZZMIN_SETTINGS = {
     # Add a language dropdown into the admin
     "language_chooser": False,
 }
+ALLOWED_HOSTS=['*']
