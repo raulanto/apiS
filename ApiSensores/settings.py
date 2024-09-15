@@ -338,3 +338,5 @@ JAZZMIN_SETTINGS = {
 ALLOWED_HOSTS=['*']
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+CSRF_TRUSTED_ORIGINS=['https://*','https://apis-production-9a03.up.railway.app','http://*',]
