@@ -13,7 +13,7 @@ class ProductoCreateSerializer(serializers.ModelSerializer):
     valores = ValoresProductoCreateSerializer(many=True, write_only=True)
     class Meta:
         model = Producto
-        fields = ['nombre', 'descripcion', 'usuario','valores']
+        fields = ['nombre', 'descripcion', 'usuario','valores','fotografia']
 
 
     def create(self, validated_data):
