@@ -21,6 +21,7 @@ class Etapa(TimeStampedModel):
     duracion = models.DurationField(blank=True, null=True, verbose_name="Duración")
     activo = models.IntegerField( choices=NOTIFICATION_TYPES, default=2)
     proceso=models.IntegerField(default=0)
+    horacreacion=models.CharField(blank=True,max_length=25)
     def __str__(self):
         return self.nombre
 

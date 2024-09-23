@@ -9,7 +9,7 @@ class EtapaAdmin(admin.ModelAdmin):
     actions = ['frenar_etapas', 'continuar_etapas']
     fieldsets = (
         ('Iniciar Etapa', {
-            'fields': ('nombre', 'fkProceso', 'duracion', 'activo')
+            'fields': ('nombre', 'fkProceso', 'duracion', 'activo','horacreacion')
         }),
     )
 

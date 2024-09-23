@@ -2,6 +2,7 @@ from rest_framework import serializers
 from Proceso.models import Etapa
 from ..serializers.proceso_serializer import ProcesoFkequipo
 
+
 class EtapaSerializer(serializers.ModelSerializer):
     fkProceso = ProcesoFkequipo()
 
@@ -10,18 +11,21 @@ class EtapaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Etapa
-        fields = ['id', 'nombre', 'activo', 'fkProceso', 'duracion', 'created_at', 'createdTime_at', 'updated_at', 'proceso']
+        fields = ['id', 'nombre', 'activo', 'fkProceso', 'duracion', 'created_at', 'horacreacion', 'updated_at',
+                  'proceso']
 
     def get_createdTime_at(self, obj):
         # Formatear la hora en el formato 08:08:50
         return obj.createdTime_at.strftime('%H:%M:%S')
 
+
 class EtapaCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Etapa
-        fields= ['activo','nombre','fkProceso','duracion']
+        fields = ['activo', 'nombre', 'fkProceso', 'duracion', 'horacreacion']
+
 
 class EtapaUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Etapa
-        fields= ['activo','proceso']
+        fields = ['activo', 'proceso']
