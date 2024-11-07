@@ -19,7 +19,6 @@ DEBUG = True
 
 
 INSTALLED_APPS = [
-
     'drf_yasg',
     'jazzmin',
     'django.contrib.admin',
@@ -29,8 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     "whitenoise.runserver_nostatic"
     'django.contrib.staticfiles',
-
-
 ]
 
 THIRD_PARTY_APPS = [
@@ -69,7 +66,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'simple_history.middleware.HistoryRequestMiddleware',
-
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'ApiSensores.urls'
