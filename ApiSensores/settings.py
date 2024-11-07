@@ -88,7 +88,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ApiSensores.wsgi.application'
+WSGI_APPLICATION = 'ApiSensores.wsgi.app'
 
 
 
